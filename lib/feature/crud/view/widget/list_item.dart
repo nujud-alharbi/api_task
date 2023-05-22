@@ -1,9 +1,12 @@
-import 'package:api_http_request/logic/controller/api_controller.dart';
-import 'package:api_http_request/model/local_model.dart';
+import 'package:api_todo_auth/core/theme/app_colors.dart';
+import 'package:api_todo_auth/feature/crud/logic/controller/todoController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/constant/keys.dart';
+import '../../model/todo.dart';
 import 'edit_form_dialog.dart';
 
 class ListItem extends StatelessWidget {
@@ -14,68 +17,94 @@ class ListItem extends StatelessWidget {
     required this.date,
   });
 
-  final ToDoModel? data;
+  final Todo? data;
   final DateTime date;
-  final ApiController controller;
+  final TodoController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 4,
-              offset: const Offset(0, 3),
-              spreadRadius: 1,
-              color: Colors.grey.shade100,
-            )
-          ]),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
+// print("-----------");
+//
+//
+// print(      GetStorage().read("k"));
+// print("data id");
+// print(data!.id);
+    final theme = Theme.of(context).textTheme;
+    return
+      GetBuilder<TodoController>(builder: (controller) {
+
+        return  Card(
+          margin: const EdgeInsets.only(bottom: 8),
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(data?.title ?? ""),
-                  Text(data?.description ?? ""),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        data?.title ?? "",
+                        style: theme.headlineMedium,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        data?.description ?? "",
+                        style: theme.bodyMedium,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        DateFormat.yMMMMEEEEd().format(date),
+                        style: theme.headlineSmall,
+                      ),
+                    ],
+                  ),
+
+               GetStorage().read(AppKeys.authKey) != null?
+
+                  Column(
+                    children: [
+
+                      IconButton(
+                        onPressed: () {
+                          Get.dialog(EditFormDialog(
+                            toDoModel: data,
+                          ));
+                        },
+                        icon: const Icon(
+                          Icons.edit,
+                          color: blueColor,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          await controller.deleteData('${data?.id}');
+                          controller.refreshData();
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: blueColor,
+                        ),
+                      )
+                    ],
+                  )
+                      : Text(""),
+
                 ],
               ),
-              Text(DateFormat.yMMMMEEEEd().format(date)),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                onPressed: () {
-                  Get.dialog(EditFormDialog(toDoModel: data,));
-                },
-                icon: const Icon(
-                  Icons.edit,
-                ),
-              ),
-              IconButton(
-                onPressed: () async {
-                 await controller.deleteData('${data?.id}');
-                  controller.refreshData();
-                },
-                icon: const Icon(
-                  Icons.delete,
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+        );
+      });
+
   }
 }

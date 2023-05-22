@@ -8,7 +8,6 @@ class Todo {
   final String date;
   final String? userId;
   final String? id;
-
   Todo(
       {required this.title, required this.description, required this.date, this.userId, this.id});
 

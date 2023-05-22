@@ -3,10 +3,10 @@ class User {
  final String name;
   int? phoneNum;
   int? birthDate;
-  String? id;
+  String id;
 
   User(
-      {required this.email, required this.name, this.phoneNum, this.birthDate, this.id});
+      {required this.email, required this.name, this.phoneNum, this.birthDate, required this.id});
 
  factory User.fromJson(Map<String, dynamic> json) {
 
@@ -17,9 +17,7 @@ class User {
    birthDate : json['birth_date'],
    id : json['id'],
 
-
    );
-
   }
 
   Map<String, dynamic> toJson() => {

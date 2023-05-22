@@ -176,7 +176,7 @@ ThemeData lightThemeData() {
     ),
     //
     floatingActionButtonTheme:const FloatingActionButtonThemeData(
-        backgroundColor:mainColor,
+       backgroundColor:blueColor,
       elevation: 0.0
     )
   );

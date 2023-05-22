@@ -1,14 +1,15 @@
-import 'package:api_http_request/logic/controller/api_controller.dart';
-import 'package:api_http_request/model/local_model.dart';
+
 import 'package:api_todo_auth/feature/crud/model/todo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../logic/controller/todoController.dart';
 
 
 class EditFormDialog extends StatelessWidget {
   EditFormDialog({Key? key, required this.toDoModel}) : super(key: key);
   final Todo? toDoModel;
-  final controller = Get.find<ApiController>();
+  final controller = Get.find<TodoController>();
 
   @override
   Widget build(BuildContext context) {

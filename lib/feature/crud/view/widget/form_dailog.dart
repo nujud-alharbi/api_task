@@ -1,12 +1,16 @@
-import 'package:api_http_request/logic/controller/api_controller.dart';
-import 'package:api_http_request/model/local_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../../../../core/constant/keys.dart';
+import '../../logic/controller/todoController.dart';
+import '../../model/todo.dart';
 
 
 class FormDialog extends StatelessWidget {
   FormDialog({Key? key}) : super(key: key);
-  final controller = Get.find<ApiController>();
+  final controller = Get.find<TodoController>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +38,14 @@ class FormDialog extends StatelessWidget {
           onPressed: () async {
             Get.back();
             //add func
-            var data = ToDoModel(
+            var data = Todo(
               title: controller.titleController.text,
               description: controller.descriptionController.text,
               date: DateTime.now().toString(),
             );
+
             await controller.postData(data);
+
             controller.refreshData();
             controller.clearController();
 
