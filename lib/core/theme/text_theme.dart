@@ -62,13 +62,13 @@ class CustomTextTheme {
         letterSpacing: 0.0,
       ),
       bodyLarge: GoogleFonts.ubuntu(
-        color: mainColor,
+        color: blueColor,
         fontSize: 20,
         fontWeight: bold,
         letterSpacing: 0.0,
       ),
       bodyMedium: GoogleFonts.ubuntu(
-        color: mainColor,
+        color: blueColor,
         fontSize: 16,
         fontWeight: medium,
         letterSpacing: 0.0,

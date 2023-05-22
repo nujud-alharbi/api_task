@@ -151,14 +151,14 @@ ThemeData darkThemeData() {
       elevation: 0.0,
       // surfaceTintColor:,
       //
-      textStyle: const TextStyle(color: mainColor),
+      textStyle: const TextStyle(color: blueColor),
       // labelTextStyle:,
       enableFeedback: true,
       // mouseCursor:,
     ),
     //
       floatingActionButtonTheme:const FloatingActionButtonThemeData(
-          backgroundColor:mainColor,
+          backgroundColor:blueColor,
           elevation: 0.0
       )
   );

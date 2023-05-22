@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeApp.lightTheme,
       darkTheme: ThemeApp.darkTheme,
       locale: controller.initialLang,
-      initialRoute: Routes.profileScreen,
+      initialRoute: Routes.signScreen,
       getPages: AppRoutes.routes,
 
     );

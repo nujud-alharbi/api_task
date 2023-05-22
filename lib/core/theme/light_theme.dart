@@ -28,7 +28,7 @@ ThemeData lightThemeData() {
     //
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(
-        color: mainColor,
+        color: blueColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,
         letterSpacing: 0.0,
@@ -75,7 +75,7 @@ ThemeData lightThemeData() {
           minimumSize: const Size(382, 41),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
           elevation: 0.4,
-          backgroundColor: mainColor,
+          backgroundColor: blackColor,
         )),
     //
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -176,7 +176,7 @@ ThemeData lightThemeData() {
     ),
     //
     floatingActionButtonTheme:const FloatingActionButtonThemeData(
-        backgroundColor:mainColor,
+       backgroundColor:blueColor,
       elevation: 0.0
     )
   );

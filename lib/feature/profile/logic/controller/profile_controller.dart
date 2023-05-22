@@ -46,7 +46,13 @@ class ProfileController extends GetxController{
     await profileiService.getData(url: ApiString.baseUrl, headers: headers);
     return todoList.map((todo) => User.fromJson(todo)).toList();
   }
+getData() async {
+ var data = await profileiService.getData(
+      url:  ApiString.baseUrl,
+      headers: headers) ;
 
+
+}
 
 
   updateData(User model) async {
