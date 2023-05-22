@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/headerWidget.dart';
+import '../../../../core/routes/route.dart';
 import '../../logic/controller/profile_controller.dart';
 import '../../widget/localization_widget.dart';
 import '../../widget/logout_widget.dart';
@@ -19,9 +20,9 @@ class ProfileScreen extends StatelessWidget {
           child: Column(children: [
             HeaderWidget(
               title: 'profile',
-              onPressed: () {
-                // Get.offNamed(Routes.initialScreen);
-              },
+            action: [
+              IconButton(onPressed:(){}, icon: Icon(Icons.sunny))
+            ],
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -37,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                   ProfileWidget(
                     text: 'personalInformation',
                     onTap: () {
-                      // Get.offNamed(Routes.personalInformation);
+                      Get.offNamed(Routes.personalInformation);
                     },
                   ),
                   const LocalizationWidget(),

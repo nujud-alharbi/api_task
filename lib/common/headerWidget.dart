@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({Key? key, required this.onPressed, this.title, this.leading})
+  const HeaderWidget({Key? key,this.title, this.leading,  this.action})
       : super(key: key);
   final Widget? leading;
-  final Function() onPressed;
-  final String? title;
 
+  final String? title;
+final List <Widget>? action;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -15,6 +15,8 @@ class HeaderWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         leading: leading,
+      actions: action,
+
 
     );
 

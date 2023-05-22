@@ -8,4 +8,4 @@ const greyLightColor = Color(0xffe4e5e5);
 const darkColor = Color(0xff272626);
 const darkGreyColor = Color(0xff505050);
 const mainColor = Color(0xFF7A7B7C);
-
+const blueColor = Color(0xEA49DBEC);

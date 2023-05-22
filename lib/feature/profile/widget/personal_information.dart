@@ -6,7 +6,10 @@ import '../../../common/text_field_widget.dart';
 import '../logic/controller/profile_controller.dart';
 
 class PersonalInformationWidget extends StatelessWidget {
-  const PersonalInformationWidget({Key? key, required this.profileController})
+  const PersonalInformationWidget({Key? key,
+    required this.profileController
+  }
+      )
       : super(key: key);
  final ProfileController profileController;
 
@@ -55,15 +58,7 @@ class PersonalInformationWidget extends StatelessWidget {
                 //     userName: profileController.nameController.text);
               },
               child: Text('edit'.tr)),
-          Align(
-              alignment: Alignment.topLeft,
-              child: TextButton(
-                onPressed: () {
-                  // Get.offNamed(Routes.newPasswordScreen);
-                },
-                child:
-                    Text('changeYourPassword'.tr, style: theme.headlineSmall),
-              )),
+
         ]);
   }
 }
