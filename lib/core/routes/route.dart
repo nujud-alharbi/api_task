@@ -18,7 +18,7 @@ class AppRoutes {
         binding: Binding()),
     GetPage(
         name: Routes.profileScreen,
-        page: () => const ProfileScreen(),
+        page: () =>  ProfileScreen(),
         binding: Binding()),
     GetPage(
         name: Routes.personalInformation,

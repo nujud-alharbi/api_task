@@ -82,7 +82,8 @@ ThemeData lightThemeData() {
         style: OutlinedButton.styleFrom(
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            backgroundColor: darkGreyColor,
+            backgroundColor: whiteColor,
+            textStyle: TextStyle(fontSize: 18,color: mainColor) ,
             side: const BorderSide(color: greyLightColor),
             padding: const EdgeInsets.symmetric(vertical: 20))),
     //
@@ -178,6 +179,13 @@ ThemeData lightThemeData() {
     floatingActionButtonTheme:const FloatingActionButtonThemeData(
        backgroundColor:blueColor,
       elevation: 0.0
-    )
+    ),
+      // outlinedButtonTheme :    OutlinedButtonThemeData(
+      //   style : OutlinedButton.styleFrom(
+      //     maximumSize: Size(88, height)
+      //   )
+      //
+      // )
+
   );
 }

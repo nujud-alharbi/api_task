@@ -1,3 +1,4 @@
+import 'package:api_todo_auth/feature/profile/widget/dark_mode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,18 +11,21 @@ import '../../widget/profile_header_widget.dart';
 import '../../widget/profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
+   ProfileScreen({Key? key}) : super(key: key);
+  final initialController = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
-     // return GetBuilder<ProfileController>(builder: (profileController) {
+return GetBuilder<ProfileController>(builder: (profileController) {
       return Scaffold(
         body: SingleChildScrollView(
           child: Column(children: [
             HeaderWidget(
               title: 'profile',
             action: [
-              IconButton(onPressed:(){}, icon: Icon(Icons.sunny))
+
+DarkModeWidget()
+
+
             ],
             ),
             Container(
@@ -43,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const LocalizationWidget(),
                   LogOutWidget(
-                  // profileController: profileController,
+                profileController: profileController,
                   ),
                 ],
               ),
@@ -51,6 +55,6 @@ class ProfileScreen extends StatelessWidget {
           ]),
         ),
       );
-   // });
+  });
 
 }}

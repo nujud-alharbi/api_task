@@ -63,7 +63,8 @@ class ListItem extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        DateFormat.yMMMMEEEEd().format(date),
+                        // data!.date.toString(),
+                     DateFormat.yMMMMEEEEd().format(date),
                         style: theme.headlineSmall,
                       ),
                     ],

@@ -51,8 +51,10 @@ class HomeScreen extends StatelessWidget {
                                 itemCount: snapshot.data?.length,
                                 itemBuilder: (context, index) {
                                   var data = snapshot.data?[index];
-                                  var date = DateFormat('yyyy-MM-dd hh:mm:ss')
-                                      .parse(data!.date);
+                                  var date =
+                             DateTime.now();
+                                 // DateFormat('yyyy-MM-dd hh:mm:ss')
+                                 // .parse(data!.date);
                                   return ListItem(
                                     data: data, controller: controller, date: date,);
                                 },

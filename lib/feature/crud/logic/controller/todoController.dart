@@ -13,7 +13,7 @@ class TodoController extends GetxController {
   final apiService = TodoService();
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+ TextEditingController dateController = TextEditingController();
 
 
 

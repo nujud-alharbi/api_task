@@ -10,6 +10,10 @@ class ProfileController extends GetxController{
 
 
   bool isLoading = false;
+
+  bool isDarkTheme = false;
+
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
