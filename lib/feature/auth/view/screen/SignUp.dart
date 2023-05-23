@@ -71,48 +71,32 @@ class SignUpScreen extends StatelessWidget {
               height: 15,
             ),
 
+
+
             GetBuilder<AuthController>(builder: (_) {
-              return TextFieldWidget(
+                return SizedBox(
+                    width: 480,
+                    child: OutlinedButton(onPressed: () {
+                      authController.chooseDate();
 
-                // readOnly: true,
-                controller: authController.dateController,
-
-                obscureText: false,
-                // validator: (value) {
-                //   if (value.toString().isEmpty) {
-                //     return 'Please enter Date'.tr;
-                //   } else {
-                //     return null;
-                //   }
-                // },
-
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    authController.chooseDate();
-                  },
-                  icon: authController.isDate
-                      ? SizedBox(
-                      height: 19,
-                      width: 19,
-                      child: Icon(Icons.ice_skating))
-                  // color: labalColor, size: 20)
-                      : SizedBox(
-                      height: 19,
-                      width: 19,
-                      child: Icon(Icons.ice_skating)),
-                  iconSize: 18,
-                ),
-
-                // hintText: 'DD/MM/YY', type: TextInputType.number,
-                // readOnly: true,
-              );
-            }),
+                    }, child:
 
 
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0 ,left: 20.0),
+                      child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:  [
+                          Icon(Icons.arrow_back_ios),
 
-            SizedBox(
-                width: 480,
-                child: TextButton(onPressed: () {}, child: Text("Date"))),
+                          Text( authController.isDate?
+                          authController.dateButton: "kkk" ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                    )));
+              }
+            ),
             const SizedBox(
               height: 15,
             ),
@@ -124,7 +108,7 @@ class SignUpScreen extends StatelessWidget {
                   var data = User(
                       name: authController.nameController.text,
                       email: authController.emailController.text,
-                      phoneNum: int.parse(authController.phoneController.text,
+                      phoneNum: int.parse(authController.phoneController.text
 
                       ), id: authController.emailController.text,
                   birthDate:authController.dattta);

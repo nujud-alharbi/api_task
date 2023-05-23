@@ -13,6 +13,7 @@ class AuthController extends GetxController{
   final apiService = AuthService();
   GetStorage authStorage = GetStorage();
   var selectedDate = DateTime.now().obs;
+   String dateButton  = DateTime.now().obs.toString();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -59,41 +60,34 @@ class AuthController extends GetxController{
   bool isDate = false;
  late int dattta   ;
 
+
+
+ chooseDateTest()async{
+   DateTime? newDate = await showDatePicker(
+       context: Get.context! ,
+       initialDate: selectedDate.value,
+       firstDate: DateTime(2000),
+       lastDate: DateTime(2100)
+   );
+   if(newDate == null)return;
+   dateButton = newDate as String;
+
+update();
+ }
   chooseDate() async {
     DateTime? pickedDate = await showDatePicker(
         context: Get.context!,
         initialDate: selectedDate.value,
         firstDate: DateTime(2000),
-        lastDate: DateTime(2100),
-        // selectableDayPredicate: disableDate,
-        builder: (context, child) {
-          return Theme(
-            data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.light(
-                primary: Colors.white, // <-- SEE HERE
-                // onPrimary: mainColor, // <-- SEE HERE
-                // onSurface: mainColor,
-              ),
-              textButtonTheme: TextButtonThemeData(
-                style: TextButton.styleFrom(
-                  // primary: mainColor, // button text color
-                ),
-              ),
-            ),
-            child: child!,
-          );
-        });
+        lastDate: DateTime(2100));
+
 
     if (pickedDate != null && pickedDate != selectedDate.value) {
       selectedDate.value = pickedDate;
-      dateController.text =
+      dateButton =
           DateFormat.yMMMd().format(selectedDate.value).toString();
       var r = dateController.text;
-      //---------------------------------
-      // dateController!.text =
-      //     DateFormat.yMMMd().format(DateTime.now());
 
-      //-------------------
 String d  =  selectedDate.value.toString() ;
 dattta = DateTime.parse(d).millisecondsSinceEpoch;
 
@@ -104,13 +98,13 @@ dattta = DateTime.parse(d).millisecondsSinceEpoch;
       isDate = true;
       update();
     } else {
-      dateController.text =
+      dateButton =
           DateFormat.yMMMd().format(selectedDate.value).toString();
       var r = dateController.text;
       String d  =  selectedDate.value.toString();
       dattta = DateTime.parse(d).millisecondsSinceEpoch;
       print("pppp");
-      print(dattta);
+      print(selectedDate.value.toString());
       isDate = true;
       update();
     }
