@@ -8,7 +8,6 @@ class AuthService {
 
   final _client = http.Client();
 
-
   //POST request
   postData({
     required String url,

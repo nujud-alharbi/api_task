@@ -82,9 +82,9 @@ ThemeData lightThemeData() {
         style: OutlinedButton.styleFrom(
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            backgroundColor: darkGreyColor,
+            textStyle: TextStyle(fontSize: 18,color: mainColor) ,
             side: const BorderSide(color: greyLightColor),
-            padding: const EdgeInsets.symmetric(vertical: 20))),
+            padding: const EdgeInsets.symmetric(vertical: 6))),
     //
     tabBarTheme: const TabBarTheme(
         unselectedLabelColor: whiteColor,
@@ -178,6 +178,8 @@ ThemeData lightThemeData() {
     floatingActionButtonTheme:const FloatingActionButtonThemeData(
        backgroundColor:blueColor,
       elevation: 0.0
-    )
+    ),
+
+
   );
 }

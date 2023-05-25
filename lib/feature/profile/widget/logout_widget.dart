@@ -7,22 +7,22 @@ import '../logic/controller/profile_controller.dart';
 
 class LogOutWidget extends StatelessWidget {
   const LogOutWidget({Key? key,
-   // required this.profileController
+   required this.profileController
   })
       : super(key: key);
-   // final ProfileController profileController;
+   final ProfileController profileController;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return DialogWidget(
-      title: 'pleaseConfirm'.tr,
-      content: "AreYouSureToLogOut".tr,
-      textButton: 'logoutDialogHeading'.tr,
+      title: 'pleaseConfirm',
+      content: "AreYouSureToLogOut",
+      textButton: 'logout',
       onPressed: () {
         // profileController.signOut();
       },
       child: Text(
-        "logoutDialogHeading".tr,
+        "logout",
         style: theme.headlineMedium,
       ),
     );

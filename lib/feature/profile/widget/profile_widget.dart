@@ -1,3 +1,4 @@
+import 'package:api_todo_auth/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -17,10 +18,11 @@ class ProfileWidget extends StatelessWidget {
               Text(text),
               const Icon(
                 Icons.arrow_forward_ios_outlined,
+                color: blueColor,
               )
             ],
           ),
-           const Divider(
+          const Divider(
             thickness: 1,
           ),
         ],

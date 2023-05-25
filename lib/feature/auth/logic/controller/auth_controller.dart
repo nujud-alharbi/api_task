@@ -8,18 +8,21 @@ import '../../../../core/constant/api_string.dart';
 import '../../../../core/constant/keys.dart';
 import '../../model/user.dart';
 
-class AuthController extends GetxController{
-
+class AuthController extends GetxController {
+  //properties
   final apiService = AuthService();
+
+  var baseUrl = ApiString.baseUrl;
   GetStorage authStorage = GetStorage();
   var selectedDate = DateTime.now().obs;
+  String changeTextDate = DateTime.now().obs.toString();
+  bool isDate = false;
+  late int newDate;
+
+  //text controller
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-
-
-
 
   final Map<String, String> headers = {
     'Access-Control-Allow-Origin': '*',
@@ -27,95 +30,53 @@ class AuthController extends GetxController{
     'Accept': '*/*',
   };
 
-
-
   clearController() {
     nameController.clear();
     emailController.clear();
+    phoneController.clear();
+    changeTextDate = "brith date";
   }
-
 
   postData(User model) async {
     await apiService.postData(
-      url: ApiString.baseUrl,
+      url: '$baseUrl/user',
       body: {
         'email': model.email,
         'name': model.name,
         'phone_num': model.phoneNum,
-        // 'id': model.id
+        "id": model.id,
+        'birth_date': model.birthDate,
       },
       headers: headers,
     );
 
-    print("kkkkk");
-    GetStorage().write("k", model.id);
-    print(GetStorage().read("k"));
-
-
-
+    GetStorage().write(AppKeys.emailKey, "${model.email}");
+    GetStorage().write(AppKeys.nameKey, "${model.name}");
+    GetStorage().write(AppKeys.phoneKey, "${model.phoneNum}");
+    GetStorage().write(AppKeys.brithDateKey, "${model.birthDate}");
   }
 
 
-  bool isDate = false;
- late int dattta   ;
+
+
 
   chooseDate() async {
     DateTime? pickedDate = await showDatePicker(
         context: Get.context!,
         initialDate: selectedDate.value,
         firstDate: DateTime(2000),
-        lastDate: DateTime(2100),
-        // selectableDayPredicate: disableDate,
-        builder: (context, child) {
-          return Theme(
-            data: Theme.of(context).copyWith(
-              colorScheme: ColorScheme.light(
-                primary: Colors.white, // <-- SEE HERE
-                // onPrimary: mainColor, // <-- SEE HERE
-                // onSurface: mainColor,
-              ),
-              textButtonTheme: TextButtonThemeData(
-                style: TextButton.styleFrom(
-                  // primary: mainColor, // button text color
-                ),
-              ),
-            ),
-            child: child!,
-          );
-        });
+        lastDate: DateTime.now());
 
     if (pickedDate != null && pickedDate != selectedDate.value) {
       selectedDate.value = pickedDate;
-      dateController.text =
-          DateFormat.yMMMd().format(selectedDate.value).toString();
-      var r = dateController.text;
-      //---------------------------------
-      // dateController!.text =
-      //     DateFormat.yMMMd().format(DateTime.now());
+      changeTextDate = DateFormat.yMMMd().format(selectedDate.value).toString();
 
-      //-------------------
-String d  =  selectedDate.value.toString() ;
-dattta = DateTime.parse(d).millisecondsSinceEpoch;
+      String date = selectedDate.value.toString();
+      newDate = DateTime.parse(date).millisecondsSinceEpoch;
 
-
-      print(dateController.text);
-      print("pppp");
-      print(dattta);
-      isDate = true;
-      update();
-    } else {
-      dateController.text =
-          DateFormat.yMMMd().format(selectedDate.value).toString();
-      var r = dateController.text;
-      String d  =  selectedDate.value.toString();
-      dattta = DateTime.parse(d).millisecondsSinceEpoch;
-      print("pppp");
-      print(dattta);
       isDate = true;
       update();
     }
+
   }
-
-
 }
-

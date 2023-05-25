@@ -15,9 +15,10 @@ class EditFormDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     controller.titleController.text = toDoModel!.title;
     controller.descriptionController.text = toDoModel!.description;
-
+    final theme = Theme.of(context).textTheme;
     return AlertDialog(
-      title: const Text('Edit item'),
+      title:  Text('Edit item',
+        style: theme.bodyMedium,),
       content: SizedBox(
         height: 200,
         child: Column(
@@ -25,6 +26,7 @@ class EditFormDialog extends StatelessWidget {
             TextField(
               controller: controller.titleController,
             ),
+            SizedBox(height: 50,),
             TextField(
               controller: controller.descriptionController,
             ),
@@ -33,7 +35,7 @@ class EditFormDialog extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text('Save', style: TextStyle(color: Colors.black),),
+          child:  Text('Save',  style: theme.headlineLarge,),
           onPressed: () async {
             Get.back();
             //add func

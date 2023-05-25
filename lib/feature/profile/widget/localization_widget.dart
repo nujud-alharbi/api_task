@@ -1,4 +1,5 @@
 
+import 'package:api_todo_auth/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,8 @@ class LocalizationWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(Icons.language_outlined),
+            const Icon(Icons.language_outlined,
+              color: blueColor,),
             const SizedBox(
               width: 10,
             ),

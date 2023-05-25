@@ -1,5 +1,3 @@
-
-
 import 'package:api_todo_auth/feature/crud/view/screen/home_screen.dart';
 import 'package:get/get.dart';
 
@@ -10,21 +8,18 @@ import '../binding/binding.dart';
 
 class AppRoutes {
   static final routes = [
-
-
     GetPage(
         name: Routes.signScreen,
         page: () => SignUpScreen(),
         binding: Binding()),
     GetPage(
         name: Routes.profileScreen,
-        page: () => const ProfileScreen(),
+        page: () => ProfileScreen(),
         binding: Binding()),
     GetPage(
         name: Routes.personalInformation,
         page: () => const PersonalInformationScreen(),
         binding: Binding()),
-
     GetPage(
         name: Routes.homeScreen,
         page: () => const HomeScreen(),
@@ -33,7 +28,6 @@ class AppRoutes {
 }
 
 class Routes {
-
   static const signScreen = '/signup_screen';
 
   static const profileScreen = '/profile_screen';
