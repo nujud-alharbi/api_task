@@ -82,10 +82,9 @@ ThemeData lightThemeData() {
         style: OutlinedButton.styleFrom(
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            backgroundColor: whiteColor,
             textStyle: TextStyle(fontSize: 18,color: mainColor) ,
             side: const BorderSide(color: greyLightColor),
-            padding: const EdgeInsets.symmetric(vertical: 20))),
+            padding: const EdgeInsets.symmetric(vertical: 6))),
     //
     tabBarTheme: const TabBarTheme(
         unselectedLabelColor: whiteColor,
@@ -180,12 +179,7 @@ ThemeData lightThemeData() {
        backgroundColor:blueColor,
       elevation: 0.0
     ),
-      // outlinedButtonTheme :    OutlinedButtonThemeData(
-      //   style : OutlinedButton.styleFrom(
-      //     maximumSize: Size(88, height)
-      //   )
-      //
-      // )
+
 
   );
 }

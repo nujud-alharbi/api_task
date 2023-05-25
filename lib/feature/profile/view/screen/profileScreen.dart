@@ -11,22 +11,18 @@ import '../../widget/profile_header_widget.dart';
 import '../../widget/profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-   ProfileScreen({Key? key}) : super(key: key);
-  final initialController = Get.find<ProfileController>();
+  ProfileScreen({Key? key}) : super(key: key);
+  final profileController = Get.find<ProfileController>();
+
   @override
   Widget build(BuildContext context) {
-return GetBuilder<ProfileController>(builder: (profileController) {
+    return GetBuilder<ProfileController>(builder: (profileController) {
       return Scaffold(
         body: SingleChildScrollView(
           child: Column(children: [
-            HeaderWidget(
-              title: 'profile',
-            action: [
+            const HeaderWidget(
 
-DarkModeWidget()
-
-
-            ],
+              action: [DarkModeWidget()],
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -37,7 +33,7 @@ DarkModeWidget()
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   const SizedBox(height: 50),
-                const ProfileHeaderWidget(),
+                  ProfileHeaderWidget(),
                   const SizedBox(height: 60),
                   ProfileWidget(
                     text: 'personalInformation',
@@ -47,7 +43,7 @@ DarkModeWidget()
                   ),
                   const LocalizationWidget(),
                   LogOutWidget(
-                profileController: profileController,
+                    profileController: profileController,
                   ),
                 ],
               ),
@@ -55,6 +51,6 @@ DarkModeWidget()
           ]),
         ),
       );
-  });
-
-}}
+    });
+  }
+}

@@ -1,12 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-import '../../../../core/constant/keys.dart';
 import '../../logic/controller/todoController.dart';
 import '../../model/todo.dart';
-
 
 class FormDialog extends StatelessWidget {
   FormDialog({Key? key}) : super(key: key);
@@ -14,8 +10,12 @@ class FormDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
     return AlertDialog(
-      title: const Text('Add item'),
+      title: Text(
+        'Add item',
+        style: theme.bodyMedium,
+      ),
       content: SizedBox(
         height: 200,
         child: Column(
@@ -24,17 +24,22 @@ class FormDialog extends StatelessWidget {
               controller: controller.titleController,
               decoration: const InputDecoration(hintText: 'Title'),
             ),
+            SizedBox(
+              height: 50,
+            ),
             TextField(
               controller: controller.descriptionController,
-              decoration:
-                  const InputDecoration(hintText: 'Description'),
+              decoration: const InputDecoration(hintText: 'Description'),
             ),
           ],
         ),
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text('Save', style: TextStyle(color: Colors.black),),
+          child:  Text(
+            'Save',
+            style: theme.headlineLarge,
+          ),
           onPressed: () async {
             Get.back();
             //add func
@@ -48,7 +53,6 @@ class FormDialog extends StatelessWidget {
 
             controller.refreshData();
             controller.clearController();
-
           },
         ),
       ],

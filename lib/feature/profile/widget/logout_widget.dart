@@ -17,12 +17,12 @@ class LogOutWidget extends StatelessWidget {
     return DialogWidget(
       title: 'pleaseConfirm',
       content: "AreYouSureToLogOut",
-      textButton: 'logoutDialogHeading',
+      textButton: 'logout',
       onPressed: () {
         // profileController.signOut();
       },
       child: Text(
-        "logoutDialogHeading",
+        "logout",
         style: theme.headlineMedium,
       ),
     );

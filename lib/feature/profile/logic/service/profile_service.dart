@@ -10,6 +10,7 @@ class ProfileService {
     try {
       final response = await _client.get(
         Uri.parse(url),
+        // "$url/$id"
         headers: headers,
       );
       return jsonDecode(response.body);
@@ -17,8 +18,6 @@ class ProfileService {
       throw Exception(e);
     }
   }
-
-
 
   //PUT request
   updateData({

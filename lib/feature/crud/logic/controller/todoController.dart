@@ -1,28 +1,25 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/constant/api_string.dart';
-import '../../../../core/constant/keys.dart';
+
 import '../../model/todo.dart';
 import '../service/todoService.dart';
 
 class TodoController extends GetxController {
   final apiService = TodoService();
+  var baseUrl = ApiString.baseUrl;
+
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
- TextEditingController dateController = TextEditingController();
-
-
+  TextEditingController dateController = TextEditingController();
 
   final Map<String, String> headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-type': 'application/json',
     'Accept': '*/*',
   };
-  String i =   GetStorage().read(AppKeys.authKey)  ;
+
   refreshData() {
     getAllData();
     update();
@@ -32,7 +29,6 @@ class TodoController extends GetxController {
   onInit() async {
     super.onInit();
     await getAllData();
-
   }
 
   clearController() {
@@ -40,34 +36,28 @@ class TodoController extends GetxController {
     descriptionController.clear();
   }
 
-
-
   Future<List<Todo>> getAllData() async {
     List todoList =
-    await apiService.getData(url: ApiString.baseUrlTodo, headers: headers);
+        await apiService.getData(url: '$baseUrl/todo', headers: headers);
     return todoList.map((todo) => Todo.fromJson(todo)).toList();
   }
 
   postData(Todo model) async {
     await apiService.postData(
-      url: ApiString.baseUrlTodo,
+      url: '$baseUrl/todo',
       body: {
         'title': model.title,
         'description': model.description,
         'date': model.date,
-        "id" : model.id
+        "id": model.id
       },
-
       headers: headers,
-
     );
-
-
   }
 
   updateData(Todo model) async {
     await apiService.updateData(
-      url: ApiString.baseUrlTodo,
+      url: '$baseUrl/todo',
       id: "${model.id}",
       body: {
         'title': model.title,
@@ -79,9 +69,6 @@ class TodoController extends GetxController {
   }
 
   deleteData(String id) async {
-    await apiService.deleteData(url: ApiString.baseUrlTodo, id: id);
+    await apiService.deleteData(url: '$baseUrl/todo', id: id);
   }
-
-
-
 }

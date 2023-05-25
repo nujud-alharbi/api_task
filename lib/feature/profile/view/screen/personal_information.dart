@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,13 +16,11 @@ class PersonalInformationScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(children: [
             HeaderWidget(
-              leading: IconButton(
-           onPressed: (){
-
-        Get.offNamed(Routes.profileScreen);
-        }, icon: const Icon(Icons.arrow_back_ios_new))
-
-            ),
+                leading: IconButton(
+                    onPressed: () {
+                      Get.offNamed(Routes.profileScreen);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_new))),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 width: 390,
