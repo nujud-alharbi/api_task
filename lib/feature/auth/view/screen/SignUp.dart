@@ -39,8 +39,9 @@ class SignUpScreen extends StatelessWidget {
                       await authController.postData(data);
 
                       Get.toNamed(Routes.homeScreen);
+                      authController.clearController();
                     }
-                    authController.clearController();
+
                   },
                   child: const Text("Sign Up"))
             ],
